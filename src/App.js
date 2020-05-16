@@ -12,7 +12,7 @@ class App extends React.Component{
     }
 
     componentDidMount(){
-        this.handleSubmit('anmol jain harmonica');
+        this.handleSubmit('John Cena');
     }
 
     onVideoSelect= (video) => {
@@ -24,7 +24,7 @@ class App extends React.Component{
         const response = await youtube.get('search', { 
             params: {
                 part: 'snippet',
-                maxResults : 5,
+                maxResults : 3,
                 key : 'AIzaSyD2qoZD2rU15hPuiR_YoddKH9LpxDLfpZQ',
                 q : searchTerm,
             }
@@ -36,20 +36,20 @@ class App extends React.Component{
     render(){
         const { selectedVideo, videos} = this.state;
 
-        return(
+        return( 
 
-            <Grid justify ="center" container spacing ={10}>                
+            <Grid justify ="center" container spacing ={5}>                
                 <Grid item xs = {12}>
-                    <Grid container spacing={10}>
+                    <Grid container spacing={3}> 
                         <Grid item xs = {12}>
                            <SearchBar onFormSubmit = {this.handleSubmit}/>
                         </Grid>
                         
-                        <Grid item xs = {8}>
+                        <Grid item xs = {7} alignItems="flex-start">
                             <VideoDetail video={selectedVideo}/>           
                         </Grid>
 
-                        <Grid item xs = {4}>
+                        <Grid item sm = {5}>
                             <VideoList videos={videos} onVideoSelect={this.onVideoSelect}/>                 
                         </Grid>
 
