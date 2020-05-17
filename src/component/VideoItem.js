@@ -7,8 +7,10 @@ const VideoItem = ({video, onVideoSelect}) => {
         <Grid item xs ={12}>
             <Paper elevation={6} style = {{display : 'flex', alignItems:'center', cursor:'pointer'}} onClick={()=> onVideoSelect(video)}>
                 <img style={{ marginRight: '10px', marginTop:'10px', marginBottom:'10px', marginLeft:'10px'}} alt="thumbnail" src={video.snippet.thumbnails.medium.url}/>
-                    <Typography variant="caption"><b><p style={{marginRight:'10px', alignContent:'justify'}}>{video.snippet.title}</p>
-                    <Button style={{marginTop:'20px', marginBottom:'20px'}} variant="outlined" color="primary" startIcon={<OndemandVideoIcon/>}> {video.snippet.channelTitle}</Button>
+                    <Typography variant="caption"><b><p style={{marginRight:'10px', alignContent:'justify'}}>{video.snippet.title}
+                    <br/>
+                    <Typography variant="caption">{video.snippet.description}</Typography><br/></p>
+                    <Button style={{marginTop:'20px', marginBottom:'20px'}} variant="outlined" color="secondary" startIcon={<OndemandVideoIcon/>}> {video.snippet.channelTitle}</Button>
                     </b></Typography>
                     
             </Paper>

@@ -5,7 +5,7 @@ import {SearchBar, VideoDetail, VideoList} from './component';
 
 import youtube from './api/youtube';
 
-class App extends React.Component{
+class App extends React.Component{ 
     state = {
         videos: [],
         selectedVideo: null,

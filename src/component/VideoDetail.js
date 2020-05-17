@@ -15,7 +15,7 @@ const VideoDetail = ({video}) => {
             <Paper elevation={6} style={{ padding: '15px'}}>
                 <Typography variant="h6" style = {{alignContent:"center"}}><b>{video.snippet.title}</b></Typography>
                 <Typography variant="caption"><b>{video.snippet.description}</b></Typography><br/>
-                <Button style={{marginTop:'20px', marginBottom:'20px'}} variant="outlined" color="primary" startIcon={<OndemandVideoIcon/>}> {video.snippet.channelTitle}</Button>
+                <Button style={{marginTop:'20px', marginBottom:'20px'}} variant="outlined" color="secondary" startIcon={<OndemandVideoIcon/>}> {video.snippet.channelTitle}</Button>
                 
             </Paper>
         </React.Fragment>
