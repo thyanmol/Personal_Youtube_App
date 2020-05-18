@@ -11,13 +11,6 @@ pipeline {
       }
     }
      
-    stage('Build') {
-      steps {
-        sh 'npm install'
-	sh 'npm run build'
-      }
-    }
-
     stage('Build image') {
         /* This builds the actual image */
 
