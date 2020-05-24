@@ -45,7 +45,7 @@ class App extends React.Component{
                            <SearchBar onFormSubmit = {this.handleSubmit}/>
                         </Grid>
                         
-                        <Grid item xs = {7} alignItems="flex-start">
+                        <Grid item xs = {7} >
                             <VideoDetail video={selectedVideo}/>           
                         </Grid>
 
