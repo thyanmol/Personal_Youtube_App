@@ -13,6 +13,22 @@ pipeline {
         git 'https://github.com/thyanmol/Personal_Youtube_App'
       }
     }
+
+     stage('install dependencies') {
+        /* This builds the actual image */
+
+	    script{
+        sh "npm install"
+    }
+    }
+
+     stage('test image') {
+        /* This builds the actual image */
+
+	    script{
+        sh "npm test"
+    }
+    }
      
     stage('Build image') {
         /* This builds the actual image */
