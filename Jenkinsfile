@@ -1,20 +1,21 @@
 pipeline {
 	environment {
-    app = ''
-  }
-  agent any
+		ci = ''
+    		app = ''
+ 	 }
+  	agent any
     
-  tools {nodejs "LocalNPM"}
+ 	tools {nodejs "LocalNPM"}
     
-  stages {
+  	stages {
         
-    stage('Git') {
-      steps {
-        git 'https://github.com/thyanmol/Personal_Youtube_App'
-      }
-    }
-
-     stage('Install dependencies') {
+	    stage('Git') {
+	       steps {
+		git 'https://github.com/thyanmol/Personal_Youtube_App'
+	      	}
+    	    }
+	
+		stage('Install dependencies') {
 		steps{
              		sh 'npm install'
 		}
@@ -25,36 +26,33 @@ pipeline {
              		sh 'npm test'
 			}}
 	}
-     
-    stage('Build image') {
-        /* This builds the actual image */
-
-	    script{
-        app = docker.build("thyanmol/youtube-1.0")
-    }
-    }
-
-    stage('Test image') {
-        
-        app.inside {
-            echo "Tests passed"
-        }
-    }
-
-    stage('Push image') {
-        /* 
-		
-		You would need to first register with DockerHub before you can push images to your account
-		
-		*/
-	    script{
-        docker.withRegistry('https://registry.hub.docker.com', 'thyanmol-docker') {
-            app.push("${env.BUILD_NUMBER}")
-            app.push("latest")
-            } 
+     	
+	    stage('Build image') {
+		 steps{
+		    script{
+			app = docker.build("81196/youtube_api")
+		    }
+		 }
 	    }
-                echo "Trying to Push Docker Build to DockerHub"
-    }  
-    
-  }
+
+		
+	    stage('Push image') {
+		 steps{
+		    script{
+			docker.withRegistry('https://registry.hub.docker.com', 'sri-docker') {
+				app.push("${env.BUILD_NUMBER}")
+				app.push("latest")
+			}
+		 }
+		echo "Trying to Push Docker Build to DockerHub"
+	       }  
+           }
+
+	stage('Deploying image with rundeck') {
+		steps{
+             		build job: 'personalised_youtube(rundeck)'
+		}
+	}
+  
+	}
 }
