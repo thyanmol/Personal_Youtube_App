@@ -2,7 +2,7 @@ FROM node:latest
 
 EXPOSE 8080
 
-RUN mkdir -p/src/app
+RUN mkdir -p /src/app
 WORKDIR /usr/src/app
 
 COPY package.json /usr/src/app
