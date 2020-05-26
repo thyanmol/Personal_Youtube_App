@@ -5,7 +5,7 @@ pipeline {
  	 }
   	agent any
     
- 	tools {nodejs "LocalNPM"}
+ 	tools {nodejs "localnode"}
     
   	stages {
         
@@ -20,12 +20,16 @@ pipeline {
              		sh 'npm install'
 		}
 	}
-		stage('Test') {
-		steps{
-			script{
-             		sh 'npm test'
-			}}
-	}
+		/*stage('Test') {				
+			  steps{
+				script{
+					
+                        sh 'npm run test'
+			}
+			}
+			  
+			
+	}*/
      	
 	    stage('Build image') {
 		 steps{
